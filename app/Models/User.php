@@ -47,7 +47,6 @@ class User extends Authenticatable
     public function setSession($roles)
     {
         Session::put([
-            'user' => $this->user,
             'user_id' => $this->id,
             'user_name' => $this->name,
             'user_email' => $this->email
