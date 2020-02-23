@@ -17,6 +17,8 @@ class CreateRolesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',50)->unique();
             $table->timestamps();
+            $table->charse = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 

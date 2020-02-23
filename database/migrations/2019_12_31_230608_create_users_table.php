@@ -19,8 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('password',100);
             $table->string('name',50);
             $table->string('email')->unique();
-            $table->unsignedTinyInteger('active');
             $table->timestamps();
+            $table->charse = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 

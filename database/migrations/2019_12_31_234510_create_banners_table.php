@@ -23,6 +23,8 @@ class CreateBannersTable extends Migration
             $table->unsignedTinyInteger('order');
             $table->unsignedTinyInteger('active');
             $table->timestamps();
+            $table->charse = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 
