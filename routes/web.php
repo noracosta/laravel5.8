@@ -44,4 +44,16 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','ad
      
      Route::resource('menus_roles','MenuRoleController');
 
+     /* Permisos Roles */
+     
+     Route::resource('permissions_roles','PermissionRoleController');
+
+     /* Banners */
+
+     Route::get('banners/{banner}/delete', 'BannerController@delete')->name('banners.delete');
+ 
+     Route::get('banners/index_data', 'BannerController@index_data')->name('banners.index_data');
+     
+     Route::resource('banners','BannerController');
+
 });

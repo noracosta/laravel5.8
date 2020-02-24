@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Menu;
 use App\Repositories\Admin\MenuRoleRepository;
-use Yajra\DataTables\Facades\DataTables;
 
 class MenuRoleController extends Controller
 {

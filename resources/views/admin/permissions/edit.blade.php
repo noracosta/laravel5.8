@@ -113,4 +113,5 @@
         
     })
 </script> 
+<script src="{{asset("assets/slug/custom.js")}}" type="text/javascript"></script>
 @endsection

@@ -1,0 +1,1 @@
+$('ul.nav-sidebar').find('a.active').parents('li').addClass('menu-open');

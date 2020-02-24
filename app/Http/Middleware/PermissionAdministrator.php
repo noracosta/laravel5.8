@@ -27,6 +27,8 @@ class PermissionAdministrator
 
     private function permission()
     {
-        return session()->get('role_name') == 'administrador';
+        //return session()->get('role_id') == '1' || '2';
+        return session()->get('role_id') > '0';
+
     }
 }

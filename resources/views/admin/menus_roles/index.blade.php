@@ -1,9 +1,9 @@
 @extends("admin.theme.$theme.layout")
 @section('titulo')
-    Menú Roles 
+    Menús Roles 
 @endsection
 @section('seccion-title')
-    Menú Roles    
+    Menús Roles    
 @endsection
 @section('breadcrumb')
     <ol class="breadcrumb float-sm-right">
