@@ -64,7 +64,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="role_id">Rol</label>
-                    {!! Form::select('role_id', $roles, $user_roles->roles->first()->id, ['class' => 'form-control','disabled']) !!}
+                    {!! Form::select('role_id[]', $roles, $user_roles->roles, ['class' => 'form-control','disabled','multiple']) !!}
                     <div class="invalid-feedback">
                         {!! $errors->first('role_id') !!}
                     </div>

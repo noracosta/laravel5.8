@@ -11,9 +11,7 @@ class UserRepository
 {
     public function find_all()
     {
-       return User::select('users.id','users.name','users.email','roles.name AS role')
-                    ->leftJoin('users_roles','users_roles.user_id','=','users.id')
-                    ->leftJoin('roles','roles.id','=','users_roles.role_id');
+        return User::with('roles:roles.name')->get();
     }
 
     public function create(array $data)

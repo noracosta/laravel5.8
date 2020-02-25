@@ -19,7 +19,7 @@ class EditUserRequest extends FormRequest
         return [            
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $this->id,
-            'role_id' => 'required|integer',  
+            'role_id' => 'required|array',  
         ];
     }
 }

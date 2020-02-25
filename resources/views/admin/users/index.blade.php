@@ -105,10 +105,12 @@ Usuarios
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'email', name: 'email'},
-                    {data: 'role', name: 'roles.name'},
+                    {data: 'roles[, ].name', name: 'rol1'},                
                     {data: 'action', name: 'action', orderable: true, searchable: true, width: 100}
                 ],
             });
+
+            
         });
     </script>
 @endsection
