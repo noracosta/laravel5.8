@@ -19,7 +19,7 @@ class CreateUsersRolesTable extends Migration
             $table->foreign('role_id','fk_users_roles_roles')->references('id')->on('roles')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedbigInteger('user_id');
             $table->foreign('user_id','fk_users_roles_users')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
-            $table->boolean('state');
+            $table->boolean('state')->default(1);
             $table->timestamps();
             $table->charse = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';

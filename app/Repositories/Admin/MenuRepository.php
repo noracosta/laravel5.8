@@ -25,6 +25,6 @@ class MenuRepository
 
     public function delete(Menu $menu)
     {
-        $menu->delete();
+        return $menu->delete();
     }
 }

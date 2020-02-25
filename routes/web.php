@@ -48,6 +48,18 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','ad
      
      Route::resource('permissions_roles','PermissionRoleController');
 
+     /* Usuarios */
+
+     Route::put('users/{user}/update_password', 'UserController@update_password')->name('users.update_password');
+
+     Route::get('users/{user}/edit_password', 'UserController@edit_password')->name('users.edit_password');
+
+     Route::get('users/{user}/delete', 'UserController@delete')->name('users.delete');
+ 
+     Route::get('users/index_data', 'UserController@index_data')->name('users.index_data');
+     
+     Route::resource('users','UserController');
+
      /* Banners */
 
      Route::get('banners/{banner}/delete', 'BannerController@delete')->name('banners.delete');

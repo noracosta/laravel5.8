@@ -25,6 +25,6 @@ class RoleRepository
 
     public function delete(Role $role)
     {
-        $role->delete();
+        return $role->delete();
     }
 }

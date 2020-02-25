@@ -6,6 +6,7 @@ use App\Models\Admin\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class User extends Authenticatable
@@ -62,5 +63,10 @@ class User extends Authenticatable
             Session::put('roles', $roles);
         }
     }
+
+    public function setPasswordAttribute($pass)
+    {
+        $this->attributes['password'] = Hash::make($pass);
+    } 
 
 }

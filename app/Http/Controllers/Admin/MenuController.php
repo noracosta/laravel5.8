@@ -28,6 +28,7 @@ class MenuController extends Controller
     public function list()
     {
         $menus = Menu::getMenu();
+
         return view('admin.menus.list', compact('menus'));
     }
 
@@ -35,11 +36,16 @@ class MenuController extends Controller
     {
         
         $menus = $this->menuRepository->find_all();
+        
         return Datatables::of($menus)
+
             ->addColumn('action', function ($menu) {
+
                 return view('admin.menus.partials.actions-datatables', compact('menu'))
+
                     ->render();
             })
+
             ->make(true);
     }
 
@@ -107,11 +113,17 @@ class MenuController extends Controller
     public function update_order(Request $request)
     {
         if ($request->ajax()) {
+
             $menu = new Menu;
+
             $menu->updateOrder($request->menu);
+
             return response()->json(['respuesta' => 'ok']);
+
         } else {
+
             abort(404);
+            
         }
     }
 

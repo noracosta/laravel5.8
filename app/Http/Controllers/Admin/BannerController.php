@@ -23,12 +23,16 @@ class BannerController extends Controller
     public function index()
     {
         can('ver-banner');
+
         return view('admin.banners.index');
     }
 
     public function list()
     {
+        can('ver-banner');
+
         $menus = Menu::getMenu();
+        
         return view('admin.menus.list', compact('menus'));
     }
 
@@ -36,11 +40,16 @@ class BannerController extends Controller
     {
         
         $menus = $this->menuRepository->find_all();
+
         return Datatables::of($menus)
+
             ->addColumn('action', function ($menu) {
+
                 return view('admin.menus.partials.actions-datatables', compact('menu'))
                     ->render();
+
             })
+
             ->make(true);
     }
 
@@ -108,11 +117,17 @@ class BannerController extends Controller
     public function update_order(Request $request)
     {
         if ($request->ajax()) {
+
             $menu = new Menu;
+
             $menu->updateOrder($request->menu);
+
             return response()->json(['respuesta' => 'ok']);
+
         } else {
+
             abort(404);
+            
         }
     }
 

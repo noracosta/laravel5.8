@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin\Permissions;
 
-use App\Models\Admin\Role;
+use App\Models\Admin\Permission;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreatePermissionRequest extends FormRequest
