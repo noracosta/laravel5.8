@@ -12,8 +12,9 @@
     </ol>
 @endsection    
 @section('styles')
-    <!-- DataTables -->
+    <!-- DataTables -->    
     <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
 @endsection
 
 @section('content')
@@ -36,7 +37,6 @@
         <div class="row">  
             <table id="menus-table" class="table table-bordered table-hover dataTable display responsive no-wrap" width="100%">
                 <thead>
-                    <th class="not-tablet-p">Id</th>
                     <th class="all">Nombre</th>
                     <th class="not-tablet-p">Url</th>
                     <th class="not-tablet-p">Orden</th>
@@ -45,7 +45,6 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Url</th>
                         <th>Orden</th>
@@ -65,17 +64,20 @@
     <!-- DataTables -->
     <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
     <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+    <script src="{{asset("assets/$theme/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script>
     <script>
         $(document).ready(function () {
             let permissions_table = $('#menus-table').DataTable({
+                scrollCollapse: true,              
                 processing: true,
                 serverSide: true,
                 searching: true,
+                select: true,
                 orderable:true,
                 info:true,
                 fixedHeader: {
-                header: true,
-                headerOffset: $('#header').height()
+                    header: true,
+                    headerOffset: $('#header').height()
                 },
                 oLanguage: {
                     "sProcessing": "Procesando...",
@@ -110,7 +112,6 @@
                     method: 'GET',
                 },
                 columns: [
-                    {data: 'menu_id', name: 'menu_id'},
                     {data: 'name', name: 'name'},
                     {data: 'url', name: 'url'},
                     {data: 'order', name: 'order'},

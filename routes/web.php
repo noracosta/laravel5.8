@@ -8,6 +8,8 @@ Route::post('authentication/login', 'Authentication\LoginController@login')->nam
 
 Route::get('authentication/logout', 'Authentication\LoginController@logout')->name('logout');
 
+Route::post('ajax-sesion', 'AjaxController@setSession')->name('ajax')->middleware('auth');
+
 Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function () {
     
     Route::get('/', 'HomeController@index');

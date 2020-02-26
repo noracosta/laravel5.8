@@ -56,6 +56,29 @@
             <!-- Footer -->
             @include("admin/theme/$theme/footer")
             <!-- /. Footer -->
+            <!-- modal-seleccionar-rol -->           
+            @if(session()->get("roles") && count(session()->get("roles")) > 1)
+            @csrf
+            <div class="modal fade" id="modal-seleccionar-rol" data-rol-set="{{empty(session()->get("role_id")) ? 'NO' : 'SI'}}" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Selecciona un rol</h4>
+                        </div>
+                        <div class="modal-body">
+                            @foreach(session()->get("roles") as $key => $role)
+                                <li>
+                                    <a href="#" class="asignar-rol" data-rolid="{{$role['id']}}" data-rolnombre="{{$role["name"]}}">
+                                        {{$role["name"]}}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+            <!-- /. modal-seleccionar-rol -->
         </div>
         <!-- jQuery -->
         <script src="{{asset("assets/$theme/plugins/jquery/jquery.min.js")}}"></script>
@@ -64,6 +87,7 @@
         <!-- AdminLTE App -->
         <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
         <script src="{{asset("assets/$theme/dist/js/custom.js")}}"></script>
+        <script src="{{asset("assets/js/custom.js")}}"></script>
         @yield('scripts')
     </body>
 </html>

@@ -14,6 +14,7 @@ Usuarios
 @section('styles')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
 @endsection
 
 @section('content')
@@ -34,8 +35,8 @@ Usuarios
             <table id="users-table" class="table table-bordered table-hover dataTable display responsive no-wrap" width="100%">
                 <thead>
                     <th class="all">Nombre</th>
-                    <th class="all">Email</th>
-                    <th class="all">Rol</th>
+                    <th class="not-tablet-p">Email</th>
+                    <th class="not-tablet-p">Rol</th>
                     <th class="all" data-priority="1">Acciones</th>
                 </thead>
                 <tfoot>
@@ -58,17 +59,20 @@ Usuarios
     <!-- DataTables -->
     <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
     <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+    <script src="{{asset("assets/$theme/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script>
     <script>
         $(document).ready(function () {
             let users_table = $('#users-table').DataTable({
+                scrollCollapse: true,              
                 processing: true,
                 serverSide: true,
                 searching: true,
+                select: true,
                 orderable:true,
                 info:true,
                 fixedHeader: {
-                header: true,
-                headerOffset: $('#header').height()
+                    header: true,
+                    headerOffset: $('#header').height()
                 },
                 oLanguage: {
                     "sProcessing": "Procesando...",

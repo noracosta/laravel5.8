@@ -28,9 +28,16 @@ if (!function_exists('getMenuAbierto')) {
 if (!function_exists('canUser')) {
     function can($permission, $redirect = true)
     {
-        /*if (session()->get('role_id') == '1') {
+        /* 
+        
+        Se usa cuando se tienen usuarios accediendo al backend y otros sólo al frontend.
+        Los usuarios con role_id == 1 son los únicos que pueden acceder al backend. 
+        
+        if (session()->get('role_id') == '1') {
             return true;
-        } else {*/
+        } else {
+        
+        */
             $role_id = session()->get('role_id');
             $permissions = Permission::whereHas('roles', function ($query) {
                     $query->where('role_id', session()->get('role_id'));
@@ -46,6 +53,13 @@ if (!function_exists('canUser')) {
                 }
             }
             return true;
-        //}
+        /* 
+        
+        Se usa cuando se tienen usuarios accediendo al backend y otros sólo al frontend.
+        Los usuarios con role_id == 1 son los únicos que pueden acceder al backend. 
+        
+        }
+        
+        */
     }
 }

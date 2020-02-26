@@ -27,8 +27,15 @@ class PermissionAdministrator
 
     private function permission()
     {
-        //return session()->get('role_id') == '1' || '2';
-        return session()->get('role_id') > '0';
+        /* 
+        
+        Para que sólo los usuarios con role_id == 1 o a 2 puedan ingresar al backend
+        
+        return session()->get('role_id') == '1' || '2';
+
+        */
+        
+        return true;
 
     }
 }

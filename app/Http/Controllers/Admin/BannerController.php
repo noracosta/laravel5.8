@@ -22,9 +22,9 @@ class BannerController extends Controller
 
     public function index()
     {
-        can('ver-banner');
 
         return view('admin.banners.index');
+    
     }
 
     public function list()
