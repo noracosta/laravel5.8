@@ -54,6 +54,7 @@
                 </div>
               </div>
             </div>
+
             <div class="row">
               <div class="col-8">
               </div>
@@ -63,6 +64,12 @@
               </div>
               <!-- /.col -->
             </div>
+            <p class="mb-1">
+              <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+            </p>
+            <p class="mb-1">
+              <a href="{{ route('register') }}">Registrate</a>
+            </p>
           </form>
         </div>
         <!-- /.login-card-body -->

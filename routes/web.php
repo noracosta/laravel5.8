@@ -2,13 +2,35 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+ /* Login */
+
 Route::get('authentication/login', 'Authentication\LoginController@index')->name('login');
 
 Route::post('authentication/login', 'Authentication\LoginController@login')->name('login_post');
 
 Route::get('authentication/logout', 'Authentication\LoginController@logout')->name('logout');
 
+/* Recuperar contraseña */
+
+Route::get('password/reset', 'Authentication\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
+Route::post('password/email', 'Authentication\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+Route::get('password/reset/{token}', 'Authentication\ResetPasswordController@showResetForm')->name('password.reset');
+
+Route::post('password/reset', 'Authentication\ResetPasswordController@reset')->name('password.update');
+
+
+/* Registrarse */
+
+Route::get('register', 'Authentication\RegisterController@showRegistrationForm')->name('register');
+
+Route::post('register', 'Authentication\RegisterController@register');
+
+
 Route::post('ajax-sesion', 'AjaxController@setSession')->name('ajax')->middleware('auth');
+
+ /* Admin */
 
 Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function () {
     
