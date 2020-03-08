@@ -84,12 +84,4 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','ad
      
      Route::resource('users','UserController');
 
-     /* Banners */
-
-     Route::get('banners/{banner}/delete', 'BannerController@delete')->name('banners.delete');
- 
-     Route::get('banners/index_data', 'BannerController@index_data')->name('banners.index_data');
-     
-     Route::resource('banners','BannerController');
-
 });
