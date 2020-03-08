@@ -23,6 +23,8 @@ class UserController extends Controller
 
     public function index()
     {
+        can('ver-usuario');
+
         return view('admin.users.index');
     }
 
@@ -45,6 +47,8 @@ class UserController extends Controller
 
     public function create()
     {
+        can('agregar-usuario');
+
         $roles = $this->userRepository->get_roles();
 
         return view('admin.users.create',compact('roles'));
@@ -53,6 +57,8 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
+        can('agregar-usuario');
+
         $data = $request->validated();
 
         if (! $this->userRepository->create($data)) {
@@ -69,6 +75,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        can('ver-usuario');
+
         $roles = $this->userRepository->get_roles();
 
         $user_roles = $this->userRepository->get_user_roles($user);
@@ -79,8 +87,9 @@ class UserController extends Controller
     }
 
     public function edit(User $user)
-    {
-                
+    {    
+        can('editar-usuario');
+
         $roles = $this->userRepository->get_roles();
 
         $user_roles = $this->userRepository->get_user_roles($user);
@@ -90,6 +99,8 @@ class UserController extends Controller
 
     public function update(User $user, EditUserRequest $request)
     {
+        can('editar-usuario');
+
         $data = $request->validated();
 
         if (! $this->userRepository->edit($user, $data)) {
@@ -106,7 +117,8 @@ class UserController extends Controller
 
     public function edit_password(User $user)
     {
-                
+        can('editar-usuario');        
+        
         $roles = $this->userRepository->get_roles();
 
         $user_roles = $this->userRepository->get_user_roles($user);
@@ -116,7 +128,8 @@ class UserController extends Controller
 
     public function update_password(User $user, EditPasswordUserRequest $request)
     {
-        
+        can('editar-usuario');
+
         $data = $request->validated();
 
         if (! $this->userRepository->edit_password($user, $data)) {
@@ -133,6 +146,8 @@ class UserController extends Controller
 
     public function delete(User $user)
     {
+        can('eliminar-usuario');
+
         $roles = $this->userRepository->get_roles();
 
         $user_roles = $this->userRepository->get_user_roles($user);
@@ -142,6 +157,8 @@ class UserController extends Controller
     
     public function destroy(User $user)
     {
+        can('eliminar-usuario');
+        
         $this->userRepository->delete($user);
 
         flash('Registro de usuario eliminado.')->success()->important();

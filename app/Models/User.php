@@ -6,6 +6,7 @@ use App\Models\Admin\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -68,5 +69,19 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($pass);
     } 
+
+    public function scopeTypeUser($q)
+    {
+        $user = Auth::user();
+
+        if (session('role_id') != '1') {
+
+            $q->where('users.id', '<>', '1');
+
+            return $q;
+        }
+
+        return $q;
+    }
 
 }

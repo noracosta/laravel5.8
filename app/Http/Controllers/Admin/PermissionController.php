@@ -22,7 +22,8 @@ class PermissionController extends Controller
 
     public function index()
     {
-    
+        can('ver-permiso');
+
         return view('admin.permissions.index');
     }
 
@@ -40,11 +41,15 @@ class PermissionController extends Controller
 
     public function create()
     {
+        can('agregar-permiso');
+
         return view('admin.permissions.create');
     }
 
     public function store(CreatePermissionRequest $request)
     {
+        can('agregar-permiso');
+
         $data = $request->validated();
 
         if (! $this->permissionRepository->create($data)) {
@@ -61,16 +66,22 @@ class PermissionController extends Controller
 
     public function show(Permission $permission)
     {
+        can('ver-permiso');
+
         return view('admin.permissions.show', compact('permission'));
     }
 
     public function edit(Permission $permission)
     {
+        can('editar-permiso');
+
         return view('admin.permissions.edit', compact('permission'));
     }
 
     public function update(Permission $permission, EditPermissionRequest $request)
     {
+        can('editar-permiso');
+
         $data = $request->validated();
 
         if (! $this->permissionRepository->edit($permission, $data)) {
@@ -87,11 +98,15 @@ class PermissionController extends Controller
 
     public function delete(Permission $permission)
     {
+        can('eliminar-permiso');
+
         return view('admin.permissions.delete', compact('permission'));
     }
     
     public function destroy(Permission $permission)
     {
+        can('eliminar-permiso');
+        
         $this->permissionRepository->delete($permission);
 
         flash('Registro de permiso eliminado.')->success()->important();

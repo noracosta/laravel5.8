@@ -20,6 +20,8 @@ class PermissionRoleController extends Controller
 
     public function index()
     {
+        can('ver-permiso-rol');
+
         $roles = $this->permissionRoleRepository->get_roles();
 
         $permissions = Permission::get();
@@ -32,6 +34,8 @@ class PermissionRoleController extends Controller
 
     public function store(Request $request)
     {
+        can('agregar-permiso-rol');
+
         if ($this->permissionRoleRepository->edit($request) == '1') {
 
             return 'Registro de permiso rol asignado.';

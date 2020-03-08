@@ -19,6 +19,8 @@ class MenuRoleController extends Controller
 
     public function index()
     {
+        can('ver-menu-rol');
+
         $roles = $this->menuRoleRepository->get_roles();
 
         $menus = Menu::getMenu();
@@ -31,6 +33,8 @@ class MenuRoleController extends Controller
 
     public function store(Request $request)
     {
+        can('agregar-menu-rol');
+
         if ($this->menuRoleRepository->edit($request) == '1') {
 
             return 'Registro de menú rol asignado.';

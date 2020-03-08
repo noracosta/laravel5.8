@@ -11,7 +11,7 @@ class UserRepository
 {
     public function find_all()
     {
-        return User::with('roles:roles.name')->get();
+        return User::typeUser()->with('roles:roles.name')->get();
     }
 
     public function create(array $data)
@@ -50,7 +50,7 @@ class UserRepository
 
     public function get_roles()
     {
-        return Role::orderBy('name','ASC')->pluck('name','id');
+        return Role::typeUser()->orderBy('name','ASC')->pluck('name','id');
     }
 
     public function get_user_roles(User $user)

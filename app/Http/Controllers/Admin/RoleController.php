@@ -22,6 +22,8 @@ class RoleController extends Controller
 
     public function index()
     {
+        can('ver-rol');
+
         return view('admin.roles.index');
 
     }
@@ -40,11 +42,15 @@ class RoleController extends Controller
 
     public function create()
     {
+        can('agregar-rol');
+
         return view('admin.roles.create');
     }
 
     public function store(CreateRoleRequest $request)
     {
+        can('agregar-rol');
+
         $data = $request->validated();
 
         if (! $this->roleRepository->create($data)) {
@@ -61,16 +67,22 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
+        can('ver-rol');
+
         return view('admin.roles.show', compact('role'));
     }
 
     public function edit(Role $role)
     {
+        can('editar-rol');
+
         return view('admin.roles.edit', compact('role'));
     }
 
     public function update(Role $role, EditRoleRequest $request)
     {
+        can('editar-rol');
+
         $data = $request->validated();
 
         if (! $this->roleRepository->edit($role, $data)) {
@@ -87,11 +99,15 @@ class RoleController extends Controller
 
     public function delete(Role $role)
     {
+        can('eliminar-rol');
+
         return view('admin.roles.delete', compact('role'));
     }
     
     public function destroy(Role $role)
     {
+        can('eliminar-rol');
+        
         $this->roleRepository->delete($role);
 
         flash('Registro de rol eliminado.')->success()->important();
