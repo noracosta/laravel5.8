@@ -12,7 +12,7 @@ $(document).ready(function () {
             role_name: $(this).data('rolnombre'),
             _token: $('input[name=_token]').val()
         }
-        ajaxRequest(data, '/ajax-sesion', 'asignar-rol');
+        ajaxRequest(data, 'ajax-sesion', 'asignar-rol');
     });
 
     $('.cambiar-rol').on('click', function (event) {
