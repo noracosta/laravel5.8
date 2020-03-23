@@ -12,10 +12,6 @@
     <li class="breadcrumb-item active">Agregar</li>
     </ol>
 @endsection    
-@section('styles')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
-@endsection
 
 @section('content')
 
@@ -25,9 +21,11 @@
             <a class="btn btn-app" href="{{ route('menus.list') }}">
                 <i class="fas fa-list"></i> Listar árbol
             </a>  
+            @if( can('agregar-menu',false))
             <a class="btn btn-app" href="{{ route('menus.create') }}">
                 <i class="fa fa-plus"></i> Agregar
             </a>
+            @endif
         </div>
         <!--/.row -->    
     </div>

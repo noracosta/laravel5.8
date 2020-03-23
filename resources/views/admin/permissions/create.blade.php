@@ -12,19 +12,17 @@
     <li class="breadcrumb-item active">Agregar</li>
     </ol>
 @endsection    
-@section('styles')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
-@endsection
 
 @section('content')
 
 <div class="card card-primary card-outline">
     <div class="card-header">
         <div class="row">
+            @if( can('agregar-permiso',false))
             <a class="btn btn-app" href="{{ route('permissions.create') }}">
                 <i class="fa fa-plus"></i> Agregar
             </a>
+            @endif
         </div>
         <!--/.row -->    
     </div>

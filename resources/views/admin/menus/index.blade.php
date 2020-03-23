@@ -25,9 +25,11 @@
             <a class="btn btn-app" href="{{ route('menus.list') }}">
                 <i class="fas fa-list"></i> Listar árbol
             </a>  
+            @if( can('agregar-menu',false))
             <a class="btn btn-app" href="{{ route('menus.create') }}">
                 <i class="fa fa-plus"></i> Agregar
-            </a>         
+            </a>
+            @endif  
         </div>
         <!--/.row -->    
     </div>

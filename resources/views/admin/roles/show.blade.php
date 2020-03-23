@@ -12,25 +12,27 @@
     <li class="breadcrumb-item active">Ver</li>
     </ol>
 @endsection    
-@section('styles')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
-@endsection
 
 @section('content')
 
 <div class="card card-primary card-outline">
     <div class="card-header">
         <div class="row">  
+            @if( can('ver-rol',false))
             <a class="btn btn-app" href="{{ route('roles.show', $role) }}">
                 <i class="fa fa-search"></i> Ver
             </a>
+            @endif
+            @if( can('editar-rol',false))
             <a class="btn btn-app active" href="{{ route('roles.edit', $role) }}">
                 <i class="fa fa-edit"></i> Editar
             </a>
+            @endif
+            @if( can('eliminar-rol',false))
             <a class="btn btn-app" href="{{ route('roles.delete', $role) }}">
                 <i class="fa fa-trash"></i> Eliminar
             </a>
+            @endif
         </div>
         <!--/.row -->    
     </div>

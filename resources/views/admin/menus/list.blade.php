@@ -23,10 +23,11 @@
             <a class="btn btn-app" href="{{ route('menus.index') }}">
                 <i class="fas fa-bars"></i> Listar
             </a>
+            @if( can('agregar-menu',false))
             <a class="btn btn-app" href="{{ route('menus.create') }}">
                 <i class="fa fa-plus"></i> Agregar
             </a>
-            
+            @endif
         </div>
         <!--/.row -->    
     </div>

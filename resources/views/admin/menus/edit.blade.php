@@ -12,28 +12,32 @@
     <li class="breadcrumb-item active">Editar</li>
     </ol>
 @endsection    
-@section('styles')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
-@endsection
 
 @section('content')
 
 <div class="card card-primary card-outline">
     <div class="card-header">
         <div class="row">
+            @if( can('ver-menu',false))
             <a class="btn btn-app" href="{{ route('menus.list') }}">
                 <i class="fas fa-list"></i> Listar árbol
             </a>  
+            @endif
+            @if( can('ver-menu',false))
             <a class="btn btn-app" href="{{ route('menus.show', $menu) }}">
                 <i class="fa fa-search"></i> Ver
             </a>
+            @endif
+            @if( can('editar-menu',false))
             <a class="btn btn-app active" href="{{ route('menus.edit', $menu) }}">
                 <i class="fa fa-edit"></i> Editar
             </a>
+            @endif
+            @if( can('eliminar-menu',false))
             <a class="btn btn-app" href="{{ route('menus.delete', $menu) }}">
                 <i class="fa fa-trash"></i> Eliminar
             </a>
+            @endif
         </div>
         <!--/.row -->    
     </div>

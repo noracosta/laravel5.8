@@ -23,9 +23,11 @@
 <div class="card card-primary card-outline">
     <div class="card-header">
         <div class="row">
+            @if( can('agregar-permiso',false))
             <a class="btn btn-app" href="{{ route('permissions.create') }}">
                 <i class="fa fa-plus"></i> Agregar
-            </a>         
+            </a>
+            @endif       
         </div>
         <!--/.row -->    
     </div>

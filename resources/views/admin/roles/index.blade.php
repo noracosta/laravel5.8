@@ -14,6 +14,7 @@
 @section('styles')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
 @endsection
 
 @section('content')
@@ -21,9 +22,11 @@
 <div class="card card-primary card-outline">
     <div class="card-header">
         <div class="row">
+            @if( can('agregar-rol',false))
             <a class="btn btn-app" href="{{ route('roles.create') }}">
                 <i class="fa fa-plus"></i> Agregar
-            </a>         
+            </a>
+            @endif 
         </div>
         <!--/.row -->    
     </div>
@@ -54,17 +57,20 @@
     <!-- DataTables -->
     <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
     <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+    <script src="{{asset("assets/$theme/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script>
     <script>
         $(document).ready(function () {
-            let permissions_table = $('#roles-table').DataTable({
+            let roles_table = $('#roles-table').DataTable({
+                scrollCollapse: true,              
                 processing: true,
                 serverSide: true,
                 searching: true,
+                select: true,
                 orderable:true,
                 info:true,
                 fixedHeader: {
-                header: true,
-                headerOffset: $('#header').height()
+                    header: true,
+                    headerOffset: $('#header').height()
                 },
                 oLanguage: {
                     "sProcessing": "Procesando...",

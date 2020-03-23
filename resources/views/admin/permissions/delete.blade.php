@@ -12,25 +12,27 @@
     <li class="breadcrumb-item active">Eliminar</li>
     </ol>
 @endsection    
-@section('styles')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
-@endsection
 
 @section('content')
 
 <div class="card card-primary card-outline">
     <div class="card-header">
         <div class="row">
+            @if( can('ver-permiso',false))
             <a class="btn btn-app" href="{{ route('permissions.show', $permission) }}">
                 <i class="fa fa-search"></i> Ver
             </a>
+            @endif
+            @if( can('editar-permiso',false))
             <a class="btn btn-app active" href="{{ route('permissions.edit', $permission) }}">
                 <i class="fa fa-edit"></i> Editar
             </a>
+            @endif
+            @if( can('eliminar-permiso',false))
             <a class="btn btn-app" href="{{ route('permissions.delete', $permission) }}">
                 <i class="fa fa-trash"></i> Eliminar
             </a>
+            @endif
         </div>
         <!--/.row -->    
     </div>

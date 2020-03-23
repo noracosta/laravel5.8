@@ -67,9 +67,7 @@
             <p class="mb-1">
               <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
             </p>
-            <p class="mb-1">
-              <a href="{{ route('register') }}">Registrate</a>
-            </p>
+            <a href="{{ route('register') }}">Registrate</a>
           </form>
         </div>
         <!-- /.login-card-body -->
